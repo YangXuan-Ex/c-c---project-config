@@ -1,0 +1,104 @@
+{
+  "name": "cpp-project-config-ch",
+  "displayName": "C/C++ Project Config (ch)",
+  "description": "可视化界面配置C/C++工程，使vscode更接近IDE环境！",
+  "version": "1.0.5",
+  "icon": "icon.png",
+  "publisher": "EXyang",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/EXyang-Repo/c-c---project-config.git"
+  },
+  "extensionPack": [
+    "ms-vscode.cpptools",
+    "ms-vscode.cpptools-themes"
+  ],
+  "engines": {
+    "vscode": "^1.70.0"
+  },
+  "categories": [
+    "Programming Languages",
+    "Debuggers",
+    "Other"
+  ],
+  "keywords": [
+    "C",
+    "C++",
+    "cpp",
+    "gcc",
+    "g++",
+    "build",
+    "debug",
+    "configuration",
+    "WSL"
+  ],
+  "activationEvents": [
+    "onLanguage:c",
+    "onLanguage:cpp",
+    "workspaceContains:**/*.c",
+    "workspaceContains:**/*.cpp",
+    "workspaceContains:**/*.h",
+    "onCommand:cpp-configurator.editConfigs",
+    "onCommand:cpp-configurator.setupBuildDebug",
+    "onCommand:cpp-configurator.syncConfigs"
+  ],
+  "main": "./out/extension.js",
+  "contributes": {
+    "commands": [
+      {
+        "command": "cpp-configurator.editConfigs",
+        "title": "配置C/C++工程",
+        "category": "C/C++配置"
+      },
+      {
+        "command": "cpp-configurator.setupBuildDebug",
+        "title": "配置编译调试文件",
+        "category": "C/C++配置"
+      },
+      {
+        "command": "cpp-configurator.syncConfigs",
+        "title": "同步C/C++配置",
+        "category": "C/C++配置"
+      }
+    ],
+    "menus": {
+      "explorer/context": [
+        {
+          "command": "cpp-configurator.editConfigs",
+          "group": "cpp-configurator@1",
+          "when": "explorerResourceIsFile || explorerResourceIsFolder"
+        },
+        {
+          "command": "cpp-configurator.setupBuildDebug",
+          "group": "cpp-configurator@2",
+          "when": "explorerResourceIsFile || explorerResourceIsFolder"
+        }
+      ]
+    }
+  },
+  "scripts": {
+    "vscode:prepublish": "npm run compile",
+    "compile": "tsc -p ./",
+    "watch": "tsc -watch -p ./",
+    "lint": "eslint src --ext ts"
+  },
+  "devDependencies": {
+    "@types/vscode": "^1.70.0",
+    "@types/node": "16.x",
+    "typescript": "^4.9.4",
+    "@typescript-eslint/eslint-plugin": "^5.45.0",
+    "@typescript-eslint/parser": "^5.45.0",
+    "eslint": "^8.28.0"
+  },
+  "extensionKind": [
+    "workspace"
+  ],
+  "capabilities": {
+    "untrustedWorkspaces": {
+      "supported": true
+    },
+    "virtualWorkspaces": {
+      "supported": "limited"
+    }
+  }
+}
